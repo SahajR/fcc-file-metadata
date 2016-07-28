@@ -4,12 +4,17 @@ var upload = multer({ dest: 'uploads/' });
 var app = express(), port = process.env.PORT || 8080;
 
 app.set('view engine', 'pug');
+
 app.get("/", function(req, res){
    res.render('index');
 });
 
+app.get("*", function(req, res){
+  res.redirect("/");
+});
 
 app.post("/get-size", upload.single('fileData'), function(req, res, next){
+    res.setHeader('Content-Type', 'application/json');
     res.send({"size" : req.file.size});
 });
 
