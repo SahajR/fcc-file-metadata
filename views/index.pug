@@ -1,0 +1,8 @@
+html
+  head
+    title= fileupload
+  body
+h1 Please upload file below
+form(action="/get-size", method="post", enctype="multipart/form-data")
+  input(type="file", name="fileData")
+  input(type="submit")
